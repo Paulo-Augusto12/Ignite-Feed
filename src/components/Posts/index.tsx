@@ -15,6 +15,8 @@ interface posts {
 
 export function Post ({content, authorName, authorRole}:posts) {
 
+    
+
     return(
         <>
 
@@ -37,7 +39,7 @@ export function Post ({content, authorName, authorRole}:posts) {
                     </div>
                 </div>
 
-                <time title="13 de setembro as 09:00"dateTime="2022-09-13 09:00:00">Publicado há uma hora</time>
+                <time title="13 de setembro as 09:00"dateTime="2022-09-13 09:00:00">Publicado há cerca de 1 hora atrás </time>
             </header>
 
             <div className="styledContent">
@@ -58,8 +60,8 @@ export function Post ({content, authorName, authorRole}:posts) {
 
             <div className="styledCommentList">
                 <Comment 
-                    authorName="Paulo Augusto"
-                    content="Foi o Otto.. e ele nem tinha videogame pra jogar '-' "
+                    commentAuthor="Paulo Augusto"
+                    content="Foi o Otto.. e o pc dele nem ia aguentar o jogo ' -- ' "
                 />
             </div>
 

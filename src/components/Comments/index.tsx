@@ -9,12 +9,17 @@ import { StyledComments } from './style'
 
 interface comments{
     
-    authorName?:string;
+    commentAuthor?:string;
     content?:string;
 
 }
 
-export function Comment ({authorName, content}:comments){
+export function Comment ({commentAuthor, content}:comments){
+
+    function likeCounter (){
+                
+        console.log("incrementing");
+    }
 
     return(
 
@@ -27,7 +32,7 @@ export function Comment ({authorName, content}:comments){
                         <div className="commentContent">
                         <header>
                             <div className="authorData">
-                            <strong>{authorName}</strong>
+                            <strong>{commentAuthor}</strong>
                             <time title="13 de setembro as 09:00"
                             dateTime="2022-09-13 09:00:00"
                             >
@@ -42,7 +47,7 @@ export function Comment ({authorName, content}:comments){
                             <p>{content}</p>
                     </div>
                     <footer >
-                    <button>
+                    <button onClick={likeCounter}>
                         <BiLike  size="20"/>
                         Aplaudir{'  '}  
                         <span > {'   '} 20 </span>
