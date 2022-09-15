@@ -55,12 +55,11 @@ export function Comment ({commentAuthor, content}:comments){
                     <footer>
                     <button onClick={increaseLike}>
                         <BiLike  size="20"/>
-                        Likes {' '} <span> {likeCounter} </span>
+                         <span> {likeCounter} </span>
                     </button>
                     <button onClick={decreaseLike}>
                         <BiDislike size="20"/>
-                        Dislikes {' '} <span>{disLikeCounter}</span>
-                        {' '}
+                          <span>{disLikeCounter}</span>
                     </button>
                 </footer>
                 </div>

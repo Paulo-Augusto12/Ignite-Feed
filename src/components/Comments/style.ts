@@ -75,7 +75,7 @@ export const StyledComments = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right: 0.8rem;
+    margin-right: 1.9rem;
     
 
     border-radius: 2px;
@@ -87,7 +87,7 @@ export const StyledComments = styled.div`
 }
 
 .commentBox footer button svg {
-    margin-right:0.3rem;
+    margin-right:0.2rem;
 }
 
 .commentBox footer span{

@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import { Avatar } from '../Avatar';
 
 import { Comment } from '../Comments/index'
@@ -15,7 +15,17 @@ interface posts {
 
 export function Post ({content, authorName, authorRole}:posts) {
 
-    
+    const [commentText , setCommentText] = useState('')
+
+    const [newComment , setNewComment] = useState(commentText)
+
+    const [actualComment , setActualComment] = useState('')
+        
+
+    function commentVisible(){
+        
+        setActualComment('dasddffg')
+    }
 
     return(
         <>
@@ -61,7 +71,7 @@ export function Post ({content, authorName, authorRole}:posts) {
             <div className="styledCommentList">
                 <Comment 
                     commentAuthor="Paulo Augusto"
-                    content="Foi o Otto.. e o pc dele nem ia aguentar o jogo ' -- ' "
+                    content={actualComment}
                 />
             </div>
 
