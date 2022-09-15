@@ -49,8 +49,8 @@ export function Comment ({commentAuthor, content}:comments){
                     <footer >
                     <button onClick={likeCounter}>
                         <BiLike  size="20"/>
-                        Aplaudir{'  '}  
-                        <span > {'   '} 20 </span>
+                        Aplaudir 
+                        <span >  20 </span>
                     </button>
                 </footer>
                 </div>
