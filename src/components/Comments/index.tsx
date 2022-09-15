@@ -1,9 +1,9 @@
-import React from 'react'
+import React , { useState } from "react"
 
 import {Avatar} from '../Avatar'
 
 import { FiTrash2 } from 'react-icons/fi'
-import { BiLike } from 'react-icons/bi'
+import { BiLike, BiDislike } from 'react-icons/bi'
 
 import { StyledComments } from './style'
 
@@ -16,9 +16,15 @@ interface comments{
 
 export function Comment ({commentAuthor, content}:comments){
 
-    function likeCounter (){
-                
-        console.log("incrementing");
+    const [likeCounter, setLikeCounter] = useState(0)
+    const [disLikeCounter , setDisLikeCounter] = useState(0)
+
+    function increaseLike(){
+        setLikeCounter(likeCounter + 1)
+    }
+
+    function decreaseLike(){
+        setDisLikeCounter(disLikeCounter + 1)
     }
 
     return(
@@ -46,11 +52,15 @@ export function Comment ({commentAuthor, content}:comments){
                         </header>
                             <p>{content}</p>
                     </div>
-                    <footer >
-                    <button onClick={likeCounter}>
+                    <footer>
+                    <button onClick={increaseLike}>
                         <BiLike  size="20"/>
-                        Aplaudir {' '}
-                        <span >  {' '} 20 </span>
+                        Likes {' '} <span> {likeCounter} </span>
+                    </button>
+                    <button onClick={decreaseLike}>
+                        <BiDislike size="20"/>
+                        Dislikes {' '} <span>{disLikeCounter}</span>
+                        {' '}
                     </button>
                 </footer>
                 </div>
