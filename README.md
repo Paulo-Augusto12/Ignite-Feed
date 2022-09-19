@@ -8,9 +8,6 @@ Projeto da trilha atualizada de React da plataforma RocketSeat. Desenvolvimento 
 
 ![Estrelas neste projeto](https://img.shields.io/github/stars/Paulo-Augusto12/Ignite-Feed?style=social)
 
-
-Um dos meus primeiros projetos em React, ainda tenho muito a aprender...
-
 # ⚛️ Conceitos desenvolvidos no Projeto
 
 - `Vite` - Uso do Vite como bundler para a aplicação
@@ -19,3 +16,5 @@ Um dos meus primeiros projetos em React, ainda tenho muito a aprender...
 - `Principais conceitos introdutórios do React` - useEffect, useState, Jsx, React Hooks, 
 
 Never stop Learning.
+
+Um dos meus primeiros projetos em React, ainda tenho muito a aprender...
