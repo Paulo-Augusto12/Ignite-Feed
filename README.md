@@ -15,6 +15,5 @@ Projeto da trilha atualizada de React da plataforma RocketSeat. Desenvolvimento 
 - `Styled- Components ` - Estilização da aplicação utilizando a biblioteca Styled-Components
 - `Principais conceitos introdutórios do React` - useEffect, useState, Jsx, React Hooks, 
 
-Never stop Learning.
 
 Um dos meus primeiros projetos em React, ainda tenho muito a aprender...
