@@ -9,6 +9,7 @@ export const HeaderDiv = styled.div`
     background-color: var(--gray-800);
     height: 80px;
     display: flex;
+    flex-direction:row;
     align-items:center;
     justify-content: center;
     
@@ -23,7 +24,7 @@ export const HeaderDiv = styled.div`
     .logo span{
         margin:0;
         padding:1rem;
-        justify-content:center;
+        align-items: center;
         font-size:1.5rem;
     }
     
