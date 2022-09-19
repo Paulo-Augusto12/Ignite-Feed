@@ -34,22 +34,27 @@ export function Post ({
 
 }:posts) {
     
-    const [commentText , setCommentText] = useState('')
-
-    const [newComment , setNewComment] = useState(commentText)
-
-    const [actualComment , setActualComment] = useState('')
-    
     const publishedAtFormatted = format(publishedAt , "d 'de' LLLL 'as' HH:mm'h'", {
         locale:ptBR,
     })
 
-    const publishedDateRealativeToNow =  formatDistanceToNow(publishedAt, {
+    const publishedDateRelativeToNow =  formatDistanceToNow(publishedAt, {
         locale:ptBR,
         addSuffix:true,
     })
 
 
+        
+    const [newComment , setNewComment] = useState([0])
+    const [newCommentText, setNewCommentText ] = useState('')
+
+    function handleCreateNewcomment(){
+        event.preventDefault()
+        setNewComment([...newComment , newComment.length + 1])
+        setNewCommentText('teste teste')
+        console.log('O comentário foi publicado -> ' , {newComment} )
+    }
+    
     return(
         <>
 
@@ -73,7 +78,7 @@ export function Post ({
                 </div>
 
                 <time title={publishedAtFormatted}  dateTime={publishedAt.toISOString()}>
-                    {publishedDateRealativeToNow}
+                    {publishedDateRelativeToNow}
                 </time>
             </header>
 
@@ -86,7 +91,7 @@ export function Post ({
                 })}                
             </div>
 
-            <form className="styledForm">
+            <form onSubmit={handleCreateNewcomment} className="styledForm">
                 <strong>Deixe seu feedback</strong>
 
                 <textarea 
@@ -99,10 +104,13 @@ export function Post ({
             </form>
 
             <div className="styledCommentList">
-                <Comment 
-                    commentAuthor="Paulo Augusto"
-                    content={actualComment}
-                />
+                    {newComment.map(comment => {
+                        return <Comment
+                            commentAuthor="Paulo Augusto"
+                            publishedAt={new Date()}
+                            content={newCommentText}
+                        />
+                    })} 
             </div>
 
         </article>

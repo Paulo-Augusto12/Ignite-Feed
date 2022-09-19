@@ -7,14 +7,18 @@ import { BiLike, BiDislike } from 'react-icons/bi'
 
 import { StyledComments } from './style'
 
+import {format, formatDistanceToNow} from 'date-fns'
+import ptBR from 'date-fns/esm/locale/pt-BR/index.js';
+
 interface comments{
     
     commentAuthor?:string;
     content?:string;
+    publishedAt: Date;
 
 }
 
-export function Comment ({commentAuthor, content}:comments){
+export function Comment ({commentAuthor, content, publishedAt}:comments){
 
     const [likeCounter, setLikeCounter] = useState(0)
     const [disLikeCounter , setDisLikeCounter] = useState(0)
@@ -23,9 +27,22 @@ export function Comment ({commentAuthor, content}:comments){
         setLikeCounter(likeCounter + 1)
     }
 
-    function decreaseLike(){
+    function increaseDisLike(){
         setDisLikeCounter(disLikeCounter + 1)
     }
+
+    
+
+    const publishedAtFormatted = format(publishedAt , "d 'de' LLLL 'as' HH:mm'h'", {
+        locale:ptBR,
+    })
+
+    const publishedDateRelativeToNow =  formatDistanceToNow(publishedAt, {
+        locale:ptBR,
+        addSuffix:true,
+    })
+
+    
 
     return(
 
@@ -39,10 +56,10 @@ export function Comment ({commentAuthor, content}:comments){
                         <header>
                             <div className="authorData">
                             <strong>{commentAuthor}</strong>
-                            <time title="13 de setembro as 09:00"
-                            dateTime="2022-09-13 09:00:00"
+                            <time title={publishedAtFormatted}
+                            dateTime={publishedAt.toISOString()}
                             >
-                                Publicado a cerca de 1 hora atrás
+                                {publishedDateRelativeToNow}
                             </time>
                             </div>
                             
@@ -57,7 +74,7 @@ export function Comment ({commentAuthor, content}:comments){
                         <BiLike  size="20"/>
                          <span> {likeCounter} </span>
                     </button>
-                    <button onClick={decreaseLike}>
+                    <button onClick={increaseDisLike}>
                         <BiDislike size="20"/>
                           <span>{disLikeCounter}</span>
                     </button>
