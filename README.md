@@ -18,4 +18,4 @@ Um dos meus primeiros projetos em React, ainda tenho muito a aprender...
 - `Styled- Components ` - Estilização da aplicação utilizando a biblioteca Styled-Components
 - `Principais conceitos introdutórios do React` - useEffect, useState, Jsx, React Hooks, 
 
-Always Learning
+Never stop Learning.
