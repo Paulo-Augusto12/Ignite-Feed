@@ -10,8 +10,10 @@ export function Header () {
         <HeaderDiv>
         <div className="styledHeader">
             <header className="logo">
-                <img src={igniteLogo} alt="Logo do projeto Ignite" />
-                <span>Ignite Feed</span>
+                <div className="headerElements">
+                    <img src={igniteLogo} alt="Logo do projeto Ignite" />
+                    <span>Ignite Feed</span>
+                </div>
             </header>
         </div>
         </HeaderDiv>

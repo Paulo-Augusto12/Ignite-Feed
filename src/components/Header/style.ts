@@ -27,6 +27,14 @@ export const HeaderDiv = styled.div`
         align-items: center;
         font-size:1.5rem;
     }
+
+    .headerElements{
+        display:flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
     
 }
 
