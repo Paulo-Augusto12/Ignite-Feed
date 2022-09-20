@@ -16,6 +16,11 @@ import { StyledPosts } from './style'
 import {format, formatDistanceToNow} from 'date-fns'
 import ptBR from 'date-fns/esm/locale/pt-BR/index.js';
 
+// Adicionais
+
+import { v4 } from 'uuid';
+
+
 export interface posts {
     content?:any;
     authorName:string;
@@ -47,11 +52,13 @@ export function Post ({
         
     const [newComment , setNewComment] = useState([0])
     const [newCommentText, setNewCommentText ] = useState('')
+    const [commentText , setCommentText] = useState(newCommentText)
     
-    function handleCreateNewcomment(){
+    function handleDisplayNewcomment(){
         event.preventDefault()
         setNewComment([...newComment , newComment.length + 1])
-        console.log('O comentário foi publicado -> ' , {newComment} )
+        
+        console.log('O comentário foi publicado -> ' , { newComment })
     }
 
     function handleSetAComment(){
@@ -61,6 +68,18 @@ export function Post ({
         )
     }
 
+    const nComment = (event:any) =>{
+        setNewCommentText(event.target.value)
+    }
+
+    const commentId = v4()
+
+    function commentData (){
+    
+    const commentTxt = (texto:any)=>{
+        setCommentText(texto.value)
+    } 
+ }
     
     
     return(
@@ -99,14 +118,14 @@ export function Post ({
                 })}                
             </div>
 
-            <form onSubmit={handleCreateNewcomment} className="styledForm">
+            <form onSubmit={handleDisplayNewcomment} className="styledForm">
                 <strong>Deixe seu feedback</strong>
 
-                <textarea 
-                    placeholder="aaa"       
-                    onChange={handleSetAComment}
+                <textarea
+                    maxLength={200} 
+                    placeholder="Deixe um comentário"       
+                    onChange={nComment}
                     value={newCommentText} 
-
                 />
                 
                 <footer>
@@ -117,6 +136,7 @@ export function Post ({
             <div className="styledCommentList">
                     {newComment.map(comment => {
                         return <Comment
+                            id={commentId}
                             commentAuthor="Paulo Augusto"
                             publishedAt={new Date()}
                             content={newCommentText}
@@ -130,4 +150,5 @@ export function Post ({
 
         </>
     )
+
 }

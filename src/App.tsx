@@ -24,7 +24,15 @@ const postagens = [
     content:
     [
         {type:'paragraph', 
-        content:'Jovem morre esperando o lançamento de Hogwarts Legacy'
+        content:'Adobe anuncia compra do Figma por US$ 20 bilhões'
+        },
+        {
+          type:'paragraph',
+          content:'A Adobe anunciou a compra da Figma por US$ 20 bilhões. A informação foi relatada pelo site TechCrunch, onde é dito que com esta negociação, a Adobe está eliminando um de seus maiores rivais no campo de design digital.'
+        },
+        {
+          type:'link',
+          content:'https://www.oficinadanet.com.br/tecnologia/42311-adobe-compra-figma'
         }
     ],
     

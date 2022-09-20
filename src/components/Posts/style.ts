@@ -79,6 +79,8 @@ export const StyledPosts = styled.div`
 
 .styledForm textarea{
     width:100%;
+    max-width: 100%;
+    resize: none;
     background: var(--gray-900);
     border:0;
     resize:none;
@@ -101,9 +103,6 @@ export const StyledPosts = styled.div`
     font-weight: bold;
     
     cursor:pointer;
-
-    
-
     &:hover{
         background: var(--green-300)
     }

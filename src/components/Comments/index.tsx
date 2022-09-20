@@ -15,10 +15,11 @@ interface comments{
     commentAuthor?:string;
     content?:string;
     publishedAt: Date;
+    id:string;
 
 }
 
-export function Comment ({commentAuthor, content, publishedAt}:comments){
+export function Comment ({commentAuthor, content, publishedAt, id}:comments){
 
     const [likeCounter, setLikeCounter] = useState(0)
     const [disLikeCounter , setDisLikeCounter] = useState(0)
@@ -31,8 +32,6 @@ export function Comment ({commentAuthor, content, publishedAt}:comments){
         setDisLikeCounter(disLikeCounter + 1)
     }
 
-    
-
     const publishedAtFormatted = format(publishedAt , "d 'de' LLLL 'as' HH:mm'h'", {
         locale:ptBR,
     })
@@ -42,7 +41,6 @@ export function Comment ({commentAuthor, content, publishedAt}:comments){
         addSuffix:true,
     })
 
-    
 
     return(
 
