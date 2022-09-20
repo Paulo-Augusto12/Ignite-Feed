@@ -47,13 +47,21 @@ export function Post ({
         
     const [newComment , setNewComment] = useState([0])
     const [newCommentText, setNewCommentText ] = useState('')
-
+    
     function handleCreateNewcomment(){
         event.preventDefault()
         setNewComment([...newComment , newComment.length + 1])
-        setNewCommentText('teste teste')
         console.log('O comentário foi publicado -> ' , {newComment} )
     }
+
+    function handleSetAComment(){
+
+        setNewCommentText(
+            this.handleSetAComment.bind
+        )
+    }
+
+    
     
     return(
         <>
@@ -95,11 +103,14 @@ export function Post ({
                 <strong>Deixe seu feedback</strong>
 
                 <textarea 
-                    placeholder="deixe um comentário"
+                    placeholder="aaa"       
+                    onChange={handleSetAComment}
+                    value={newCommentText} 
+
                 />
                 
                 <footer>
-                    <button type="submit">Publicar</button>
+                    <button type="submit" value="Enviar Comentário !">Publicar</button>
                 </footer>
             </form>
 
