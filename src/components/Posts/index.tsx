@@ -52,20 +52,14 @@ export function Post ({
         
     const [newComment , setNewComment] = useState([0])
     const [newCommentText, setNewCommentText ] = useState('')
-    const [commentText , setCommentText] = useState(newCommentText)
+    const [commentText , setCommentText] = useState('')
+    const [commentFixed , setCommentFixed] = useState('')
     
     function handleDisplayNewcomment(){
         event.preventDefault()
         setNewComment([...newComment , newComment.length + 1])
         
         console.log('O comentário foi publicado -> ' , { newComment })
-    }
-
-    function handleSetAComment(){
-
-        setNewCommentText(
-            this.handleSetAComment.bind
-        )
     }
 
     const nComment = (event:any) =>{
@@ -80,7 +74,13 @@ export function Post ({
         setCommentText(texto.value)
     } 
  }
-    
+
+ function setComment(texto:string){
+    const getComment = (texto) =>{ 
+    setCommentText(newCommentText)
+    }
+    return texto;
+ }
     
     return(
         <>
@@ -114,7 +114,7 @@ export function Post ({
                     if(line.type === 'paragraph'){
                         return(<p>{line.content}</p>)
                     }else if (line.type === 'link')
-                    return(<p><a>{line.content}</a></p>)
+                    return(<p><a href={line.content}>{line.content}</a></p>)
                 })}                
             </div>
 
@@ -139,7 +139,7 @@ export function Post ({
                             id={commentId}
                             commentAuthor="Paulo Augusto"
                             publishedAt={new Date()}
-                            content={newCommentText}
+                            content={commentText}
                         />
                     })} 
             </div>
