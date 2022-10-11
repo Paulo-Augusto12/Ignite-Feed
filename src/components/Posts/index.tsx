@@ -67,7 +67,6 @@ export function Post({
 
   function setText(event) {
     setNewCommentText(content);
-
   }
 
   return (
@@ -123,7 +122,9 @@ export function Post({
 
           <div className="styledCommentList">
             {newComment.map(() => {
-              {newComment.length > 0 }
+              {
+                newComment.length > 0;
+              }
               return (
                 <Comment
                   id={commentId}
