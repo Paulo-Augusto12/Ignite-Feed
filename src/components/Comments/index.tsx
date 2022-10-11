@@ -23,15 +23,8 @@ export function Comment ({commentAuthor, content, publishedAt, id}:comments){
 
     const [likeCounter, setLikeCounter] = useState(0)
     const [disLikeCounter , setDisLikeCounter] = useState(0)
-
-    function increaseLike(){
-        setLikeCounter(likeCounter + 1)
-    }
-
-    function increaseDisLike(){
-        setDisLikeCounter(disLikeCounter + 1)
-    }
-
+    const [commentContent, setCommentContent] = useState('')
+    
     const publishedAtFormatted = format(publishedAt , "d 'de' LLLL 'as' HH:mm'h'", {
         locale:ptBR,
     })
@@ -40,6 +33,15 @@ export function Comment ({commentAuthor, content, publishedAt, id}:comments){
         locale:ptBR,
         addSuffix:true,
     })
+
+    function increaseLike(){
+        setLikeCounter(likeCounter + 1)
+    }
+
+    function increaseDisLike(){
+        setDisLikeCounter(disLikeCounter + 1)
+    }
+    
 
 
     return(
@@ -61,7 +63,9 @@ export function Comment ({commentAuthor, content, publishedAt, id}:comments){
                             </time>
                             </div>
                             
-                            <button  title="Deletar comentário">
+                            <button  
+                            title="Deletar comentário"
+                            >
                                 <FiTrash2 size="24" />
                             </button>
                         </header>
@@ -78,8 +82,6 @@ export function Comment ({commentAuthor, content, publishedAt, id}:comments){
                     </button>
                 </footer>
                 </div>
-
-                
 
             </div>
 

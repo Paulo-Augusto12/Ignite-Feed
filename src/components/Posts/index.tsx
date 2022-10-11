@@ -1,154 +1,141 @@
-
 //React
 
-import React , {useState} from 'react'
+import React, { useState } from "react";
 
 //Importação de componentes
 
-import { Avatar } from '../Avatar';
+import { Avatar } from "../Avatar";
 
-import { Comment } from '../Comments/index'
+import { Comment } from "../Comments/index";
 
-import { StyledPosts } from './style'
+import { StyledPosts } from "./style";
 
 //Format Date
 
-import {format, formatDistanceToNow} from 'date-fns'
-import ptBR from 'date-fns/esm/locale/pt-BR/index.js';
+import { format, formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/esm/locale/pt-BR/index.js";
 
 // Adicionais
 
-import { v4 } from 'uuid';
-
+import { v4 } from "uuid";
 
 export interface posts {
-    content?:any;
-    authorName:string;
-    authorRole:string;
-    publishedAt: Date;
-    authorImg:string;
+  content?: any;
+  authorName: string;
+  authorRole: string;
+  publishedAt: Date;
+  authorImg: string;
+  commentId: any;
 }
 
-export function Post ({
+type comments = {
+  content: string;
+  commentId: number;
+};
 
-    content, 
-    authorName, 
-    authorRole, 
+export function Post({
+  content,
+  authorName,
+  authorRole,
+  publishedAt,
+  authorImg,
+}: posts) {
+  const publishedAtFormatted = format(
     publishedAt,
-    authorImg,
-
-}:posts) {
-    
-    const publishedAtFormatted = format(publishedAt , "d 'de' LLLL 'as' HH:mm'h'", {
-        locale:ptBR,
-    })
-
-    const publishedDateRelativeToNow =  formatDistanceToNow(publishedAt, {
-        locale:ptBR,
-        addSuffix:true,
-    })
-
-
-        
-    const [newComment , setNewComment] = useState([0])
-    const [newCommentText, setNewCommentText ] = useState('')
-    const [commentText , setCommentText] = useState('')
-    const [commentFixed , setCommentFixed] = useState('')
-    
-    function handleDisplayNewcomment(){
-        event.preventDefault()
-        setNewComment([...newComment , newComment.length + 1])
-        
-        console.log('O comentário foi publicado -> ' , { newComment })
+    "d 'de' LLLL 'as' HH:mm'h'",
+    {
+      locale: ptBR,
     }
+  );
 
-    const nComment = (event:any) =>{
-        setNewCommentText(event.target.value)
-    }
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
 
-    const commentId = v4()
+  const commentId = v4();
+  const [comment, setComment] = useState("");
 
-    function commentData (){
-    
-    const commentTxt = (texto:any)=>{
-        setCommentText(texto.value)
-    } 
- }
+  const [newComment, setNewComment] = useState([0]);
+  const [newCommentText, setNewCommentText] = useState("");
+  const [commentText, setCommentText] = useState("");
 
- function setComment(texto:string){
-    const getComment = (texto) =>{ 
-    setCommentText(newCommentText)
-    }
-    return texto;
- }
-    
-    return(
-        <>
+  function handleDisplayNewcomment() {
+    event.preventDefault();
+    setNewComment([...newComment, newComment.length + 1]);
+  }
 
-        <StyledPosts>
-        
+  function setText(event) {
+    setNewCommentText(content);
+
+  }
+
+  return (
+    <>
+      <StyledPosts>
         <article className="post">
-            
-            <header className="styledHeader">
-                <div className="styledAuthorAvatar">
-                    <Avatar 
-                        image={authorImg}
-                        hasBorder
-                    />
-                    
-                    <div className="authorInfo">
-                        
-                        <strong>{authorName}</strong>
-                        <span>{authorRole}</span>
+          <header className="styledHeader">
+            <div className="styledAuthorAvatar">
+              <Avatar image={authorImg} hasBorder />
 
-                    </div>
-                </div>
-
-                <time title={publishedAtFormatted}  dateTime={publishedAt.toISOString()}>
-                    {publishedDateRelativeToNow}
-                </time>
-            </header>
-
-            <div className="styledContent">
-                {content.map(line => {
-                    if(line.type === 'paragraph'){
-                        return(<p>{line.content}</p>)
-                    }else if (line.type === 'link')
-                    return(<p><a href={line.content}>{line.content}</a></p>)
-                })}                
+              <div className="authorInfo">
+                <strong>{authorName}</strong>
+                <span>{authorRole}</span>
+              </div>
             </div>
 
-            <form onSubmit={handleDisplayNewcomment} className="styledForm">
-                <strong>Deixe seu feedback</strong>
+            <time
+              title={publishedAtFormatted}
+              dateTime={publishedAt.toISOString()}
+            >
+              {publishedDateRelativeToNow}
+            </time>
+          </header>
 
-                <textarea
-                    maxLength={200} 
-                    placeholder="Deixe um comentário"       
-                    onChange={nComment}
-                    value={newCommentText} 
+          <div className="styledContent">
+            {content.map((line) => {
+              if (line.type === "paragraph") {
+                return <p>{line.content}</p>;
+              } else if (line.type === "link")
+                return (
+                  <p>
+                    <a href={line.content}>{line.content}</a>
+                  </p>
+                );
+            })}
+          </div>
+
+          <form onSubmit={handleDisplayNewcomment} className="styledForm">
+            <strong>Deixe seu feedback</strong>
+
+            <textarea
+              name="conteudo"
+              placeholder="Deixe um comentário"
+              onChange={setText}
+            />
+
+            <footer>
+              <button type="submit" value="Enviar Comentário !">
+                Publicar
+              </button>
+            </footer>
+          </form>
+
+          <div className="styledCommentList">
+            {newComment.map(() => {
+              {newComment.length > 0 }
+              return (
+                <Comment
+                  id={commentId}
+                  commentAuthor="Paulo Augusto"
+                  publishedAt={new Date()}
+                  content={newCommentText}
                 />
-                
-                <footer>
-                    <button type="submit" value="Enviar Comentário !">Publicar</button>
-                </footer>
-            </form>
-
-            <div className="styledCommentList">
-                    {newComment.map(comment => {
-                        return <Comment
-                            id={commentId}
-                            commentAuthor="Paulo Augusto"
-                            publishedAt={new Date()}
-                            content={commentText}
-                        />
-                    })} 
-            </div>
-
+              );
+            })}
+          </div>
         </article>
-        
-        </StyledPosts>
-
-        </>
-    )
-
+      </StyledPosts>
+    </>
+  );
 }
