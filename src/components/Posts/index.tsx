@@ -60,13 +60,14 @@ export function Post({
   const [newCommentText, setNewCommentText] = useState("");
   const [commentText, setCommentText] = useState("");
 
-  function handleDisplayNewcomment() {
+  function handleDisplayNewcomment(event) {
     event.preventDefault();
     setNewComment([...newComment, newComment.length + 1]);
+    setCommentText(event.target.value)
   }
 
   function setText(event) {
-    setNewCommentText(content);
+    setNewCommentText(commentText);
   }
 
   return (
@@ -130,7 +131,7 @@ export function Post({
                   id={commentId}
                   commentAuthor="Paulo Augusto"
                   publishedAt={new Date()}
-                  content={newCommentText}
+                  content={commentText}
                 />
               );
             })}

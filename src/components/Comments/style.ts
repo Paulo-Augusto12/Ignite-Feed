@@ -51,7 +51,7 @@ export const StyledComments = styled.div`
     line-height: 0;
     border-radius: 2px;
     transition: 0.1s;
-    &:hover{
+    &:hover {
         color: var(--red-500);
     }
 }
@@ -98,7 +98,7 @@ export const StyledComments = styled.div`
 .commentBox footer span::before {
     content: "\u2022";
 
-    padding : 0 0.25rem
+  padding : 0 0.25rem;
 }
 
 `
